@@ -45,6 +45,23 @@
     vmid: "{{ item.vmid | default(omit) }}"
   loop: "{{ proxmox_container }}"
 
+- name: Verify that LXC container exists
+  community.general.proxmox:
+    api_host: "{{ proxmox_api_host }}"
+    api_token_id: "{{ item.api_token_id | default(proxmox_api_token_id) }}"
+    api_token_secret: "{{ item.api_token_secret | default(proxmox_api_token_secret) }}"
+    api_user: "{{ item.api_user | default(proxmox_api_user) }}"
+    hostname: "{{ item.hostname }}"
+    node: "{{ item.node }}"
+    state: present
+    validate_certs: "{{ item.validate_certs | default(proxmox_api_validate_certs) | bool }}"
+    vmid: "{{ item.vmid }}"
+  loop: "{{ proxmox_container }}"
+  register: __lxc_present
+  until: "'is already exists' in __lxc_present.msg"
+  retries: 10
+  delay: 1
+
 - name: Manage Containers state
   community.general.proxmox:
     api_host: "{{ proxmox_api_host }}"
