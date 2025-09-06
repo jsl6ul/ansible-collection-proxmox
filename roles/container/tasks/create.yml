@@ -19,7 +19,7 @@
     hostname: "{{ item.hostname | default(omit) }}"
     ip_address: "{{ item.ip_address | default(omit) }}"
     memory: "{{ item.memory | default(512) }}"
-    mounts_volumes: "{{ item.mounts_volumes | default(omit) }}"
+    mount_volumes: "{{ item.mount_volumes | default(omit) }}"
     mounts: "{{ item.mounts | default(omit) }}"
     nameserver: "{{ item.nameserver | default(omit) }}"
     netif: "{{ item.netif | default(omit) }}"
