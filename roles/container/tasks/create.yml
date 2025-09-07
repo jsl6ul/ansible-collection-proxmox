@@ -57,6 +57,7 @@
     validate_certs: "{{ item.validate_certs | default(proxmox_api_validate_certs) | bool }}"
     vmid: "{{ item.vmid }}"
   loop: "{{ proxmox_container }}"
+  when: not ansible_check_mode
   register: __lxc_present
   until: "'is already exists' in __lxc_present.msg"
   retries: 10
