@@ -44,6 +44,7 @@
     validate_certs: "{{ item.validate_certs | default(proxmox_api_validate_certs) | bool }}"
     vmid: "{{ item.vmid | default(omit) }}"
   loop: "{{ proxmox_container }}"
+  throttle: 1
 
 - name: Verify that LXC container exists
   community.general.proxmox:
@@ -71,5 +72,6 @@
     api_token_secret: "{{ proxmox_api_token_secret }}"
     node: "{{ item.node }}"
     hostname: "{{ item.hostname }}"
+    vmid: "{{ item.vmid }}"
     state: "{{ item.state | default('started') }}"
   loop: "{{ proxmox_container }}"
