@@ -16,7 +16,7 @@
     features: "{{ item.features | default(omit) }}"
     force: "{{ item.force | default(omit) | bool }}"
     hookscript: "{{ item.hookscript | default(omit) }}"
-    hostname: "{{ item.hostname | default(omit) }}"
+    hostname: "{{ item.hostname }}"
     ip_address: "{{ item.ip_address | default(omit) }}"
     memory: "{{ item.memory | default(512) }}"
     mount_volumes: "{{ item.mount_volumes | default(omit) }}"
