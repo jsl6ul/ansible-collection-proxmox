@@ -14,7 +14,7 @@
     disk: "{{ item.disk | default(omit) }}"
     disk_volume: "{{ item.disk_volume | default(omit) }}"
     features: "{{ item.features | default(omit) }}"
-    force: "{{ item.force | default(omit) | bool }}"
+    force: "{{ item.force | default(omit) }}"
     hookscript: "{{ item.hookscript | default(omit) }}"
     hostname: "{{ item.hostname }}"
     ip_address: "{{ item.ip_address | default(omit) }}"
