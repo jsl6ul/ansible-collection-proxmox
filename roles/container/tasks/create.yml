@@ -60,7 +60,7 @@
   loop: "{{ proxmox_container }}"
   when: not ansible_check_mode
   register: __lxc_present
-  until: "'is already exists' in __lxc_present.msg"
+  until: "'is already' in __lxc_present.msg"
   retries: 10
   delay: 1
 
